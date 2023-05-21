@@ -6,21 +6,21 @@
     <body>
         <script>
             function getComputerChoice() {
-                const pick = ["rock", "paper", "scissors"];
+                const pick = ['rock', 'paper', 'scissors'];
                 return pick[Math.floor(Math.random() * pick.length)];
             }
 
             function playRound(playerSelection, computerSelection) {
                 if (playerSelection === computerSelection) {
-                    return 'It\'s a tie! You both picked ${playerSelection}.';
-                } else if (playerSelection === "rock" && computerSelection === "scissors") {
+                    return `It\'s a tie! You both picked ${playerSelection}.`;
+                } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
                     return "You win! Rock beats Scissors";
-                } else if (playerSelection === "paper" && computerSelection === "rock") {
+                } else if (playerSelection === 'paper' && computerSelection === 'rock') {
                     return "You win! Paper beats Rock";
-                } else if (playerSelection === "scissors" && computerSelection === "paper") {
+                } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
                     return "You win! Scissors beats Paper";
                 } else {
-                    return "You lose! ${computerSelection} beats ${playerSelection}.";
+                    return `You lose! ${computerSelection} beats ${playerSelection}.`;
                 }
             }
 
