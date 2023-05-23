@@ -18,20 +18,20 @@
                     return `It's a tie! You and the computer both have picked ${playerPick}.`;
                 }
                 else if (playerPick === "rock" && computerPick === "scissors") {
-                    return "Congratulations, you have won! Rock beats Scissors"
                     playerScore++
+                    return "Congratulations, you have won! Rock beats Scissors"
                 }
                 else if (playerPick === "paper" && computerPick === "rock") {
-                    return "Congratulations, you have won! Paper beats Rock"
                     playerScore++
+                    return "Congratulations, you have won! Paper beats Rock"
                 }
                 else if (playerPick === "scissors" && computerPick === "paper") {
-                    return "Congratulations, you have won! Scissors beats Paper"
                     playerScore++
+                    return "Congratulations, you have won! Scissors beats Paper"
                 }
                 else {
-                    return `Sorry! You have lost. The computer's ${computerPick} has beaten your ${playerPick}.`
                     computerScore++
+                    return `Sorry! You have lost. The computer's ${computerPick} has beaten your ${playerPick}.`
                 }
             }
 
