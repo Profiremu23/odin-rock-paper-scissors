@@ -12,19 +12,35 @@
 
             function playRound(playerPick, computerPick) {
                 if (playerPick === computerPick) {
-                    console.log(`It's a tie! You and the computer both have picked ${playerPick}.`);
+                    return `It's a tie! You and the computer both have picked ${playerPick}.`;
                 }
                 else if (playerPick === "rock" && computerPick === "scissors") {
-                    console.log("Congratulations, you have won! Rock beats Scissors");
+                    return "Congratulations, you have won! Rock beats Scissors";
+                    playerScore++;
                 }
                 else if (playerPick === "paper" && computerPick === "rock") {
-                    console.log("Congratulations, you have won! Paper beats Rock");
+                    return "Congratulations, you have won! Paper beats Rock";
+                    playerScore++;
                 }
                 else if (playerPick === "scissors" && computerPick === "paper") {
-                    console.log("Congratulations, you have won! Scissors beats Paper")
+                    return "Congratulations, you have won! Scissors beats Paper"
+                    playerScore++;
                 }
                 else {
-                    console.log (`Sorry! You have lost. The computer's ${computerPick} have beaten your ${playerPick}.`);
+                    return `Sorry! You have lost. The computer's ${computerPick} have beaten your ${playerPick}.`;
+                    computerScore++;
+                }
+            }
+
+            let playerScore = 0;
+            let computerScore = 0;
+
+            function game() {
+                if (playerScore === 5) {
+                    console.log("You have won against your computer, congratulations!");
+                }
+                else if (computerScore === 5) {
+                    console.log("Well, at least you had some fun, right?");
                 }
             }
 
