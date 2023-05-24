@@ -5,6 +5,7 @@
     </head>
     <body>
         <h1>Press F12 to play Rock, Paper, Scissors in the console!</h1>
+        <h2>Enter game() function to play a round with your computer!</h2>
         <script>
             let playerScore = 0;
             let computerScore = 0;
@@ -45,7 +46,7 @@
                 else if (computerScore === 5) {
                     playerScore = 0;
                     computerScore = 0;
-                    console.log("Well, at least you had some fun, right?");
+                    console.log("You have lost the game. Well, at least you had some fun, right?");
                 }
 
                 const playerPick = prompt("Start the game by picking among 'Rock, Paper, Scissors'").toLowerCase();
