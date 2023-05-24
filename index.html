@@ -4,6 +4,7 @@
         <title>Rock, Paper & Scissors</title>
     </head>
     <body>
+        <h1>Press F12 to play Rock, Paper, Scissors in the console!</h1>
         <script>
             let playerScore = 0;
             let computerScore = 0;
@@ -18,35 +19,39 @@
                     return `It's a tie! You and the computer both have picked ${playerPick}.`;
                 }
                 else if (playerPick === "rock" && computerPick === "scissors") {
-                    playerScore++
-                    return "Congratulations, you have won! Rock beats Scissors"
+                    playerScore++;
+                    return "Congratulations, you have won! Rock beats Scissors";
                 }
                 else if (playerPick === "paper" && computerPick === "rock") {
-                    playerScore++
-                    return "Congratulations, you have won! Paper beats Rock"
+                    playerScore++;
+                    return "Congratulations, you have won! Paper beats Rock";
                 }
                 else if (playerPick === "scissors" && computerPick === "paper") {
-                    playerScore++
-                    return "Congratulations, you have won! Scissors beats Paper"
+                    playerScore++;
+                    return "Congratulations, you have won! Scissors beats Paper";
                 }
                 else {
-                    computerScore++
-                    return `Sorry! You have lost. The computer's ${computerPick} has beaten your ${playerPick}.`
+                    computerScore++;
+                    return `Sorry! You have lost. The computer's ${computerPick} has beaten your ${playerPick}.`;
                 }
             }
 
             function game() {
                 if (playerScore === 5) {
+                    playerScore = 0;
+                    computerScore = 0;
                     console.log("You have won against the computer, congratulations!");
                 }
                 else if (computerScore === 5) {
+                    playerScore = 0;
+                    computerScore = 0;
                     console.log("Well, at least you had some fun, right?");
                 }
 
                 const playerPick = prompt("Start the game by picking among 'Rock, Paper, Scissors'").toLowerCase();
                 const computerPick = getComputerChoice();
                 console.log(playRound(playerPick, computerPick));
-                console.log("You have" + " " + playerScore + " " + "points," + " " + "while the computer also has" + " " + computerScore + " " + "points.")
+                console.log("You have" + " " + playerScore + " " + "points," + " " + "while the computer also has" + " " + computerScore + " " + "points.");
             }
 
             game();
