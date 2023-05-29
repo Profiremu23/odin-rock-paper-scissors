@@ -4,8 +4,7 @@
         <title>Rock, Paper & Scissors</title>
     </head>
     <body>
-        <h1>Press F12 to play Rock, Paper, Scissors in the console!</h1>
-        <h2>Enter game() function to play a round with your computer!</h2>
+        <h1>Press F12 to view the results of the Rock, Paper, Scissors game in the console!</h1>
         <script>
             let playerScore = 0;
             let computerScore = 0;
@@ -38,23 +37,28 @@
             }
 
             function game() {
-                if (playerScore === 5) {
+                for (let i = 0; i < 5; i++) {
+                    const playerPick = prompt("Start the game by picking among 'Rock, Paper, Scissors'").toLowerCase();
+                    const computerPick = getComputerChoice();
+                    console.log(playRound(playerPick, computerPick));
+                    console.log("You have" + " " + playerScore + " " + "points," + " " + "while the computer also has" + " " +  computerScore + " " + "points.");
+                }
+                if (playerScore > computerScore) {
                     playerScore = 0;
                     computerScore = 0;
                     console.log("You have won against the computer, congratulations!");
                 }
-                else if (computerScore === 5) {
+                else if (computerScore > playerScore) {
                     playerScore = 0;
                     computerScore = 0;
                     console.log("You have lost the game. Well, at least you had some fun, right?");
                 }
-
-                const playerPick = prompt("Start the game by picking among 'Rock, Paper, Scissors'").toLowerCase();
-                const computerPick = getComputerChoice();
-                console.log(playRound(playerPick, computerPick));
-                console.log("You have" + " " + playerScore + " " + "points," + " " + "while the computer also has" + " " + computerScore + " " + "points.");
+                else {
+                    playerScore = 0;
+                    computerScore = 0;
+                    console.log("It's a tie! After 5 games, your score is" + " " + playerScore + ", " + "the computer's score is"+ " " + computerScore);
+                }
             }
-
             game();
         </script>
     </body>
