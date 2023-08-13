@@ -1,0 +1,33 @@
+body {
+    background-color: #404258;
+    color: whitesmoke;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px;
+}
+
+h1 {
+    font-size: 36px;
+    margin: -8px;
+}
+
+div {
+    margin: 8px;
+}
+
+button {
+    background-color: #6b728e;
+    border: 4px, 4px;
+    margin: 8px;
+    padding: 4px;
+}
+
+button:hover {
+    background-color: #7981a5;
+}
+
+button, img {
+    transition: color .6s .4s;
+}
