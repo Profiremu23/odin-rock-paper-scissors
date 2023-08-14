@@ -1,6 +1,12 @@
 // Initializing variables
 let playerScore = 0;
 let computerScore = 0;
+let playedRounds = 0;
+
+// Initializing the player's query selectors
+const playerPickedRock = document.querySelector('.rock');
+const playerPickedPaper = document.querySelector('.paper');
+const playerPickedScissors = document.querySelector('.scissors');
 
 // Computer selection
 function getComputerChoice() {
@@ -8,13 +14,25 @@ function getComputerChoice() {
     return pick[Math.floor(Math.random() * pick.length)];
 }
 
-// Player selection
-function getPlayerChoice() {
-    const playerPick = document.querySelectorAll('button');
-    playerPick.forEach((button) => {
-        button.addEventListener('click', () => {
-            playRound(button.className, getComputerChoice());
-        });
+// Player selections
+function getPlayerChoiceRock() {
+    playerPickedRock.addEventListener('click', () => {
+        playRound(playerPickedRock.className, getComputerChoice(), game());
+        playedRounds++;
+    });
+}
+
+function getPlayerChoicePaper() {
+    playerPickedPaper.addEventListener('click', () => {
+        playRound(playerPickedPaper.className, getComputerChoice(), game());
+        playedRounds++;
+    });
+}
+
+function getPlayerChoiceScissors() {
+    playerPickedScissors.addEventListener('click', () => {
+        playRound(playerPickedScissors.className, getComputerChoice(), game());
+        playedRounds++;
     });
 }
 
@@ -46,30 +64,36 @@ function playRound(playerPick, computerPick) {
     }
 }
 
-// Game start and game over logic
+// Game function and display
 function game() {
-    for (let i = 0; i < 5; i++) {
+    for (playedRounds = 0; playedRounds < 5; playedRounds++) {
         const scoreboard = document.querySelector('.score');
-        scoreboard.textContent = `You have ${playerScore} points, while the computer has ${computerScore} points.`;
+        scoreboard.textContent = `After ${playedRounds} played games, you have ${playerScore} points, while the computer has ${computerScore} points.`;
     }
-    if (playerScore > computerScore) {
+    if (playedRounds === 5 && playerScore > computerScore) {
+        playedRounds = 0;
         playerScore = 0;
         computerScore = 0;
         const playerWon = document.querySelector('.results');
         playerWon.textContent = `Congratulations, you have won against the computer!`;
     }
-    else if (computerScore > playerScore) {
+    else if (playedRounds === 5 && computerScore > playerScore) {
+        playedRounds = 0;
         playerScore = 0;
         computerScore = 0;
         const computerWon = document.querySelector('.results');
-        computerWon.textContent = `You have lost the game against the computer. At least you had fun playing the game, right?`;
+        computerWon.textContent = `You have lost against the computer. At least you had fun playing the game, right?`;
     }
-    else {
+    else if (playedRounds === 5 && playerScore === computerScore) {
+        playedRounds = 0;
         playerScore = 0;
         computerScore = 0;
         const draw = document.querySelector('.results');
-        draw.textContent = `It's a tie! After 5 games, your score is standing at ${playerScore} points, the computer's score is ${computerScore} points.`;
+        draw.textContent = `It's a tie! After 5 played games, your score is standing at ${playerScore} points, the computer's score is ${computerScore} points.`;
     }
 }
-getPlayerChoice();
-game();
+
+// Button to reset the game
+function refresh() {
+    window.location.reload("Refresh");
+}

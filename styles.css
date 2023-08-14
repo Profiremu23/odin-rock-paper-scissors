@@ -17,17 +17,23 @@ div {
     margin: 8px;
 }
 
-button {
+button, input {
     background-color: #6b728e;
-    border: 4px, 4px;
+    border: 4px;
     margin: 8px;
     padding: 4px;
 }
 
-button:hover {
+button:hover, input:hover {
     background-color: #7981a5;
 }
 
 button, img {
     transition: color .6s .4s;
+}
+
+.refresh {
+    color: whitesmoke;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 4px;
 }
