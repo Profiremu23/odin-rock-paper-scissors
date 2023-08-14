@@ -14,77 +14,72 @@ function getComputerChoice() {
     return pick[Math.floor(Math.random() * pick.length)];
 }
 
-// Player selections
-function getPlayerChoiceRock() {
-    playerPickedRock.addEventListener('click', () => {
-        playRound(playerPickedRock.className, getComputerChoice(), game());
-        playedRounds++;
-    });
-}
+// Player selection
+playerPickedRock.addEventListener('click', () => {
+    playRound(playerPickedRock.className, getComputerChoice());
+});
+playerPickedPaper.addEventListener('click', () => {
+    playRound(playerPickedPaper.className, getComputerChoice());
+});
+playerPickedScissors.addEventListener('click', () => {
+    playRound(playerPickedScissors.className, getComputerChoice());
+});
 
-function getPlayerChoicePaper() {
-    playerPickedPaper.addEventListener('click', () => {
-        playRound(playerPickedPaper.className, getComputerChoice(), game());
-        playedRounds++;
-    });
-}
-
-function getPlayerChoiceScissors() {
-    playerPickedScissors.addEventListener('click', () => {
-        playRound(playerPickedScissors.className, getComputerChoice(), game());
-        playedRounds++;
-    });
-}
-
-// Results after playing a round
+// Results after playing a round plus scoreboard setup
 function playRound(playerPick, computerPick) {
+    playedRounds++;
     if (playerPick === computerPick) {
         const computerWin = document.querySelector('.outcome');
         computerWin.textContent = `It's a tie! Both of you have showed ${playerPick}.`;
     }
     else if (playerPick === "rock" && computerPick === "scissors") {
-        playerScore++;
         const playerWin1 = document.querySelector('.outcome');
         playerWin1.textContent = `Congratulations, you have won! Rock defeats Scissors`;
+        playerScore++;
     }
     else if (playerPick === "paper" && computerPick === "rock") {
-        playerScore++;
         const playerWin2 = document.querySelector('.outcome');
         playerWin2.textContent = `Congratulations, you have won! Paper defeats Rock`;
+        playerScore++;
     }
     else if (playerPick === "scissors" && computerPick === "paper") {
-        playerScore++;
         const playerWin3 = document.querySelector('.outcome');
         playerWin3.textContent = `Congratulations, you have won! Scissors defeats Paper`;
+        playerScore++;
     }
     else {
-        computerScore++;
         const draw = document.querySelector('.outcome');
         draw.textContent = `Sorry! You have lost. The computer's ${computerPick} has defeated your ${playerPick}.`;
+        computerScore++;
+    }
+    const scoreboard = document.querySelector('.score');
+    scoreboard.textContent = `After ${playedRounds} played games, you have ${playerScore} points, while the computer has ${computerScore} points.`;
+    if (playedRounds === 5) {
+        declareWinner();
+    }
+    else {
+        const endTextCleaner = document.querySelector('.results');
+        endTextCleaner.textContent = ` `;
     }
 }
 
-// Game function and display
-function game() {
-    for (playedRounds = 0; playedRounds < 5; playedRounds++) {
-        const scoreboard = document.querySelector('.score');
-        scoreboard.textContent = `After ${playedRounds} played games, you have ${playerScore} points, while the computer has ${computerScore} points.`;
-    }
-    if (playedRounds === 5 && playerScore > computerScore) {
+// Game over logic
+function declareWinner() {
+    if (playerScore > computerScore) {
         playedRounds = 0;
         playerScore = 0;
         computerScore = 0;
         const playerWon = document.querySelector('.results');
         playerWon.textContent = `Congratulations, you have won against the computer!`;
     }
-    else if (playedRounds === 5 && computerScore > playerScore) {
+    else if (computerScore > playerScore) {
         playedRounds = 0;
         playerScore = 0;
         computerScore = 0;
         const computerWon = document.querySelector('.results');
         computerWon.textContent = `You have lost against the computer. At least you had fun playing the game, right?`;
     }
-    else if (playedRounds === 5 && playerScore === computerScore) {
+    else if (playerScore === computerScore) {
         playedRounds = 0;
         playerScore = 0;
         computerScore = 0;

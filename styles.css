@@ -11,6 +11,7 @@ body {
 h1 {
     font-size: 36px;
     margin: -8px;
+    margin-top: auto;
 }
 
 div {
@@ -21,7 +22,6 @@ button, input {
     background-color: #6b728e;
     border: 4px;
     margin: 8px;
-    padding: 4px;
 }
 
 button:hover, input:hover {
@@ -32,8 +32,23 @@ button, img {
     transition: color .6s .4s;
 }
 
-.refresh {
+.refresh, a {
     color: whitesmoke;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 4px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background-color: #262838;
+    text-align: center;
+    margin: 0px 0px auto 0px;
+    border: 0px;
+    padding: 16px;
 }
